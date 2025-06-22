@@ -5,6 +5,8 @@ import com.m01.dbhelper.common.SqlSchedule;
 import com.m01.dbhelper.common.SqlTask;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -326,5 +328,101 @@ public class SqlExecutor {
      */
     private static void logQueryResults(ResultSet resultSet, String scheduleName, String taskName, String sql) throws SQLException {
         ResultLogger.logQueryResults(resultSet, scheduleName, taskName, sql);
+    }
+
+    /**
+     * Reads SQL content from a file
+     * This method is kept for backward compatibility
+     *
+     * @param filePath path to the SQL file
+     * @return the contents of the SQL file as a string
+     * @throws IOException if the file cannot be read
+     * @deprecated Use SqlValidator.readSqlFile instead
+     */
+    @Deprecated
+    private static String readSqlFile(String filePath) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(filePath)));
+    }
+
+    /**
+     * Splits a SQL script into individual statements
+     * This method is kept for backward compatibility
+     *
+     * @param script the SQL script
+     * @return a list of individual SQL statements
+     * @deprecated Use SqlValidator.splitSqlStatements instead
+     */
+    @Deprecated
+    private static List<String> splitSqlStatements(String script) {
+        List<String> statements = new ArrayList<>();
+        String[] rawStatements = script.split(";");
+
+        for (String statement : rawStatements) {
+            String trimmed = statement.trim();
+            if (!trimmed.isEmpty()) {
+                statements.add(trimmed + ";");
+            }
+        }
+
+        return statements;
+    }
+
+    /**
+     * Gets a database connection based on the schedule configuration
+     *
+     * @param schedule the SQL schedule containing connection details
+     * @return a database connection
+     * @throws SQLException if connection fails
+     */
+    private static Connection getConnection(SqlSchedule schedule) throws SQLException {
+        // If task-specific connection info is provided, it could override these defaults
+        String dbUrl = schedule.getDbUrl();
+        String dbUser = schedule.getDbUser();
+        String dbPassword = schedule.getDbPassword();
+        DbType dbType = schedule.getDbType();
+
+        // Load appropriate driver based on database type
+        try {
+            if (dbType != null) {
+                switch (dbType) {
+                    case MYSQL:
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        break;
+                    case POSTGRESQL:
+                        Class.forName("org.postgresql.Driver");
+                        break;
+                    case GAUSSDB:
+                        Class.forName("org.postgresql.Driver"); // GaussDB uses PostgreSQL driver
+                        break;
+                    case SQLITE:
+                        Class.forName("org.sqlite.JDBC");
+                        break;
+                    default:
+                        logger.warning("Unknown database type: " + dbType);
+                }
+            } else {
+                logger.warning("Database type is null, driver will not be explicitly loaded");
+            }
+        } catch (ClassNotFoundException e) {
+            logger.log(Level.WARNING, "Database driver not found for: " + dbType, e);
+            // Continue anyway - the driver might be loaded automatically
+        }
+
+        return DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+    }
+
+    /**
+     * Safely closes a database connection
+     *
+     * @param connection the connection to close
+     */
+    private static void closeConnection(Connection connection) {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                logger.log(Level.WARNING, "Error closing database connection", e);
+            }
+        }
     }
 }
