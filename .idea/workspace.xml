@@ -4,27 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f447b8a9-6b5c-43b4-8e53-bb0bd970ff0e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/m01/dbhelper/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/m01/dbhelper/common/DbType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/m01/dbhelper/common/SqlSchedule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/m01/dbhelper/common/SqlTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/m01/dbhelper/util/JsonParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/m01/dbhelper/util/ResultLogger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/m01/dbhelper/util/SqlExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/m01/dbhelper/util/SqlValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/m01/dbhelper/util/JsonParserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/m01/dbhelper/util/SqlValidatorTest.java" afterDir="false" />
+    <list default="true" id="f447b8a9-6b5c-43b4-8e53-bb0bd970ff0e" name="Changes" comment="dphelper">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/m01/dbhelper/util/SqlExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/m01/dbhelper/util/SqlExecutor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,11 +109,24 @@
       <workItem from="1750560202683" duration="985000" />
       <workItem from="1750561198739" duration="582000" />
       <workItem from="1750561813461" duration="5907000" />
-      <workItem from="1750604822230" duration="1664000" />
+      <workItem from="1750604822230" duration="2124000" />
     </task>
+    <task id="LOCAL-00001" summary="dphelper">
+      <option name="closed" value="true" />
+      <created>1750606597157</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1750606597157</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="dphelper" />
+    <option name="LAST_COMMIT_MESSAGE" value="dphelper" />
   </component>
 </project>
