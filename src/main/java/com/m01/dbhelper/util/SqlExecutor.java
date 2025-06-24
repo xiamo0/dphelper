@@ -57,6 +57,12 @@ public class SqlExecutor {
      */
     public static boolean executeSchedule(SqlSchedule schedule) {
         logger.info("Executing SQL schedule: " + schedule.getScheduleName());
+
+        // 设置结果文件路径，如果在调度表中指定了路径，则使用指定路径
+        if (schedule.getResultFilePath() != null && !schedule.getResultFilePath().trim().isEmpty()) {
+            ResultLogger.setResultFile(schedule.getResultFilePath());
+        }
+
         ResultLogger.initResultFile(); // Initialize the result file
 
         List<SqlTask> tasks = schedule.getTaskList();

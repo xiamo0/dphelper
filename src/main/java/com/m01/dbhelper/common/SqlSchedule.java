@@ -12,6 +12,7 @@ public class SqlSchedule {
     private String dbUrl;
     private String dbUser;
     private String dbPassword;
+    private String resultFilePath; // 输出结果保存文件的全路径
     private List<SqlTask> taskList;
 
     public String getScheduleName() {
@@ -60,6 +61,14 @@ public class SqlSchedule {
 
     public void setDbPassword(String dbPassword) {
         this.dbPassword = dbPassword;
+    }
+
+    public String getResultFilePath() {
+        return resultFilePath;
+    }
+
+    public void setResultFilePath(String resultFilePath) {
+        this.resultFilePath = resultFilePath;
     }
 
     public List<SqlTask> getTaskList() {

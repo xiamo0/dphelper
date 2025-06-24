@@ -1,5 +1,6 @@
 package com.m01.dbhelper.util;
 
+import com.m01.dbhelper.common.DbType;
 import com.m01.dbhelper.common.SqlSchedule;
 import com.m01.dbhelper.common.SqlTask;
 import org.junit.jupiter.api.Test;
@@ -114,7 +115,7 @@ class JsonParserTest {
         SqlSchedule schedule = new SqlSchedule();
         schedule.setScheduleName("Test Schedule");
         schedule.setPolicyWhenError("continue");
-        schedule.setDbType("mysql");
+        schedule.setDbType(DbType.MYSQL);
         schedule.setDbUrl("jdbc:mysql://localhost:3306/testdb");
         schedule.setDbUser("testuser");
         schedule.setDbPassword("testpass");
@@ -144,7 +145,7 @@ class JsonParserTest {
         SqlSchedule schedule = new SqlSchedule();
         schedule.setScheduleName("Test Schedule");
         schedule.setPolicyWhenError("continue");
-        schedule.setDbType("mysql");
+        schedule.setDbType(DbType.MYSQL);
         schedule.setDbUrl("jdbc:mysql://localhost:3306/testdb");
         schedule.setDbUser("testuser");
         schedule.setDbPassword("testpass");
